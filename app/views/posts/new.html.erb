@@ -1,0 +1,25 @@
+<h1>Create a Post</h1>
+<% if @post.errors.any? %>
+<p>Your submission has <%= pluralize(@post.errors.count, 'error') %>
+<ul>
+  <% @post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @post do |p| %>
+
+<p>
+    <%= p.label :title %>
+    <%= p.text_field :title %>
+</p>
+<p>
+    <%= p.label :body %></br>
+    <%= p.text_area :body %>
+</p>
+
+<p>
+  <%= p.submit "Create" %>
+</p>
+<% end %>
